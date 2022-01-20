@@ -11,12 +11,13 @@ import {
   DotsCircleHorizontalIcon,
   DotsHorizontalIcon,
 } from "@heroicons/react/outline";
+import {useSession} from "next-auth/react";
 
 function Sidebar() {
+  const {data: session} = useSession();
   return (
     <div className="hidden sm:flex flex-col items-center xl:items-start xl:w-[340px] p-2 fixed h-full">
       <div className="flex items-center justify-center w-14 h-14 hoverAnimationBird p-0 xl:ml-24">
-        {/*<Image src="https://rb.gy/ogau5a" width={30} height={30}/>*/}
         <Image src="https://upload.wikimedia.org/wikipedia/sco/thumb/9/9f/Twitter_bird_logo_2012.svg/172px-Twitter_bird_logo_2012.svg.png"
                width={30}
                height={25}/>
@@ -45,15 +46,15 @@ function Sidebar() {
        hover:bg-[#1a8cd8]">Tweet
       </button>
       <div className="flex items-center justify-center mt-auto hoverAnimation xl:ml-auto xl:-mr-5">
-        <img src="https://yt3.ggpht.com/yti/APfAmoFlXWaR3khH4L4y1GK0sZDCEsfKJQjH2a3nA0IkTg=s88-c-k-c0x00ffffff-no-rj-mo"
+        <img src={session.user.image}
              alt=""
              className="h-10 w-10 rounded-full xl:mr-2.5"
         />
         <div className="hidden xl:inline leading-5">
-          <h4 className="font-bold">Sasha </h4>
-          <p className="text-[#6e767d]">@SashaMelnikov</p>
+          <h4 className="font-bold">{session.user.name} </h4>
+          <p className="text-[#6e767d]">@{session.user.tag}</p>
         </div>
-        <DotsHorizontalIcon className="h-5 hidden xl:inline ml-10" />
+        <DotsHorizontalIcon className="h-5 hidden xl:inline ml-10"/>
       </div>
     </div>
   )
