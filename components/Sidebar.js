@@ -11,7 +11,7 @@ import {
   DotsCircleHorizontalIcon,
   DotsHorizontalIcon,
 } from "@heroicons/react/outline";
-import {useSession} from "next-auth/react";
+import {signOut, useSession} from "next-auth/react";
 
 function Sidebar() {
   const {data: session} = useSession();
@@ -45,7 +45,8 @@ function Sidebar() {
        rounded-full w-56 h-[52px] text-lg font-bold shadow-md
        hover:bg-[#1a8cd8]">Tweet
       </button>
-      <div className="flex items-center justify-center mt-auto hoverAnimation xl:ml-auto xl:-mr-5">
+      <div className="flex items-center justify-center mt-auto hoverAnimation
+       xl:ml-auto xl:-mr-5" onClick={signOut}>
         <img src={session.user.image}
              alt=""
              className="h-10 w-10 rounded-full xl:mr-2.5"

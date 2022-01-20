@@ -12,6 +12,7 @@ import {
   updateDoc,
 } from "@firebase/firestore";
 import {getDownloadURL, ref, uploadString} from "@firebase/storage";
+import {useSession} from "next-auth/react";
 
 function Input() {
   const [input, setInput] = useState("");
@@ -19,16 +20,17 @@ function Input() {
   const [showEmojis, setShowEmojis] = useState(false);
   const [loading, setLoading] = useState(false);
   const filePickerRef = useRef(null);
+  const {data: session} = useSession();
 
   const sendPost = async () => {
     if (loading) return;
     setLoading(true);
 
     const docRef = await addDoc(collection(db, 'posts'), {
-      // id: session.user.uid,
-      // username: session.user.name,
-      // userImg: session.user.image,
-      // tag: session.user.tag,
+      id: session.user.uid,
+      username: session.user.name,
+      userImg: session.user.image,
+      tag: session.user.tag,
       text: input,
       timestamp: serverTimestamp(),
     });
@@ -74,7 +76,7 @@ function Input() {
   return (
     <div className={`border-b border-grey-100 p-3 flex space-x-3 overflow-y-scroll 
     truncate ${loading && "opacity-60"}`}>
-      <img src="https://yt3.ggpht.com/yti/APfAmoFlXWaR3khH4L4y1GK0sZDCEsfKJQjH2a3nA0IkTg=s88-c-k-c0x00ffffff-no-rj-mo"
+      <img src={session.user.image}
            alt=""
            className="h-11 w-11 rounded-full cursor-pointer"/>
       <div className="w-full divide-y divide-gray-100">
