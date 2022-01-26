@@ -53,6 +53,25 @@ function Post({id, post, postPage}) {
     [db, id]
   );
 
+  useEffect(
+    () =>
+      onSnapshot(collection(db, "posts", id, "likes"), (snapshot) =>
+        setLikes(snapshot.docs)
+      ),
+    [db, id]
+  );
+
+  useEffect(
+    () =>
+      onSnapshot(
+        query(collection(db, "posts", id, "comments"), orderBy("timestamp", "desc")),
+        (snapshot) => {
+          setComments(snapshot.docs);
+        }
+      ),
+    [db, id]
+  );
+
 
   const likePost = async () => {
     if (liked) {
@@ -65,7 +84,8 @@ function Post({id, post, postPage}) {
   }
 
   return (
-    <div className="p-3 flex cursor-pointer border-b border-grey-100"
+    <div className="hover:bg-black hover:bg-opacity-[0.03] p-3 flex cursor-pointer
+    border-b border-grey-100 transition ease-out duration-300"
          onClick={() => router.push(`/${id}`)}>
       {!postPage && (
         <img src={post?.userImg}

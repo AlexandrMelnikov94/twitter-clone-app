@@ -76,7 +76,7 @@ function Input() {
   return (
     <div className={`border-b border-grey-100 p-3 flex space-x-3 overflow-y-scroll 
     truncate ${loading && "opacity-60"}`}>
-      <img src={session.user.image}
+      <img src={session?.user.image}
            alt=""
            className="h-11 w-11 rounded-full cursor-pointer"/>
       <div className="w-full divide-y divide-gray-100">
