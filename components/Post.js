@@ -1,6 +1,25 @@
-import {collection,deleteDoc,doc,onSnapshot,setDoc} from "@firebase/firestore";
-import {ChartBarIcon,ChatIcon,DotsHorizontalIcon,HeartIcon,ShareIcon,SwitchHorizontalIcon,TrashIcon} from "@heroicons/react/outline";
-import {HeartIcon as HeartIconFilled} from "@heroicons/react/solid";
+import {
+  collection,
+  deleteDoc,
+  doc,
+  onSnapshot,
+  orderBy,
+  query,
+  setDoc,
+} from "@firebase/firestore";
+import {
+  ChartBarIcon,
+  ChatIcon,
+  DotsHorizontalIcon,
+  HeartIcon,
+  ShareIcon,
+  SwitchHorizontalIcon,
+  TrashIcon,
+} from "@heroicons/react/outline";
+import {
+  HeartIcon as HeartIconFilled,
+  ChatIcon as ChatIconFilled,
+} from "@heroicons/react/solid";
 import {useSession} from "next-auth/react";
 import {useRouter} from "next/router";
 import {useEffect, useState} from "react";
@@ -11,11 +30,11 @@ import {db} from "../firebase";
 
 function Post({id, post, postPage}) {
   const {data: session} = useSession();
-  const [setIsOpen] = useRecoilState(modalState);
-  const [setPostId] = useRecoilState(postIdState);
+  const [isOpen, setIsOpen] = useRecoilState(modalState);
+  const [postId, setPostId] = useRecoilState(postIdState);
   const [likes, setLikes] = useState([]);
   const [liked, setLiked] = useState(false);
-  const [comments] = useState([]);
+  const [comments, setComments] = useState([]);
   const router = useRouter();
 
   useEffect(
@@ -68,8 +87,8 @@ function Post({id, post, postPage}) {
               <span className={`text-[#6e767d] text-sm sm:text-[15px]
               ${!postPage && "ml-1.5"}`}>@{post?.tag}</span>
             </div>
+            <span className="text-[#6e767d]">{" "}·{" "}</span>
             <span className="text-[#6e767d] hover:underline text-sm sm:text-[15px]">
-              {" "}·{" "}
               <Moment fromNow>{post?.timestamp?.toDate()}</Moment>
             </span>
             {!postPage && (

@@ -86,8 +86,8 @@ function Input() {
             value={input}
             placeholder="What's happening?"
             rows="2"
-            className="bg-transparent outline-none text-lg tracking-wind w-full
-            min-h-[50px] truncate"/>
+            className="bg-transparent outline-none text-lg tracking-wide w-full
+            min-h-[50px] truncate resize-none"/>
 
           {selectedFile && (
             <div className="relative">
