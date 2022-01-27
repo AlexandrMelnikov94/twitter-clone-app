@@ -14,29 +14,14 @@ function Widgets() {
             type="text"
             className="bg-transparent
             placeholder-gray-500 outline-none absolute inset-0 pl-11 pr-4 border
-            border-transparent w-full focus:border-[#1d9bf0] rounded-full
-            focus:bg-white focus:shadow-lg"
+            border-transparent w-full"
             placeholder="Search Twitter"
           />
         </div>
       </div>
 
       <div className="space-y-3 pt-2 bg-gray-100 rounded-xl w-11/12 xl:w9/12">
-        <h4 className="font-bold text-xl px-4">What's happening</h4>
-        <Timeline
-          dataSource={{
-            sourceType: 'profile',
-            screenName: 'TwitterDev'
-          }}
-          options={{
-            // backgroundColor: 'yellow',
-            // backgroundColor: 'black',
-            height: '85vh'
-          }}
-        />
-        <Follow
 
-        />
       </div>
     </div>
   )

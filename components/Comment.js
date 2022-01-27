@@ -1,5 +1,5 @@
 import Moment from "react-moment";
-import {ChartBarIcon, ChatIcon, DotsHorizontalIcon, HeartIcon, ShareIcon} from "@heroicons/react/outline";
+import {DotsHorizontalIcon} from "@heroicons/react/outline";
 
 function Comment({id, comment}) {
   return (
