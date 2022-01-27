@@ -14,7 +14,8 @@ function Widgets() {
             type="text"
             className="bg-transparent
             placeholder-gray-500 outline-none absolute inset-0 pl-11 pr-4 border
-            border-transparent w-full"
+            border-transparent w-full focus:border-[#1d9bf0] rounded-full
+            focus:bg-white focus:shadow-lg"
             placeholder="Search Twitter"
           />
         </div>
