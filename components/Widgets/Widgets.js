@@ -6,7 +6,7 @@ function Widgets() {
     <div className="hidden lg:inline ml-8 xl:w-[450] py-1 space-y-5">
       <div className="sticky top-0 py-1.5 z-50 w-11/12
        xl:w9/12">
-        <div className="flex items-center bg-gray-100 p-3 rounded-full relative">
+        <div className="flex items-center bg-gray-100 p-3 w-[250px] rounded-full relative">
           <SearchIcon className="text-gray-500 h-5 z-50"/>
           <input
             type="text"
@@ -16,8 +16,6 @@ function Widgets() {
             placeholder="Search Twitter"
           />
         </div>
-      </div>
-      <div className="space-y-3 pt-2 bg-gray-100 rounded-xl w-11/12 xl:w9/12">
       </div>
     </div>
   )

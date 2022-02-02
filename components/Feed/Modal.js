@@ -5,7 +5,7 @@ import {Fragment, useEffect, useState} from "react";
 import {onSnapshot, doc, addDoc, collection, serverTimestamp} from "@firebase/firestore";
 import {db} from "../../firebase";
 import {useSession} from "next-auth/react";
-import {EmojiHappyIcon, PhotographIcon, XIcon} from "@heroicons/react/outline";
+import {XIcon} from "@heroicons/react/outline";
 import {useRouter} from "next/router";
 import Moment from "react-moment";
 
@@ -16,7 +16,6 @@ function Modal() {
   const [post, setPost] = useState();
   const [comment, setComment] = useState("");
   const router = useRouter();
-
 
   useEffect(
     () =>
@@ -121,12 +120,6 @@ function Modal() {
                       />
                       <div className="flex items-center justify-between pt-2.5">
                         <div className="flex items-center">
-                          <div className="icon">
-                            <PhotographIcon className="text-[#1d9bf0] h-[22px]"/>
-                          </div>
-                          <div className="icon">
-                            <EmojiHappyIcon className="text-[#1d9bf0] h-[22px]"/>
-                          </div>
                         </div>
                         <button
                           className="bg-[#1d9bf0] text-white rounded-full px-4 py-1.5

@@ -11,7 +11,7 @@ import {db} from "../firebase";
 import Head from "next/head";
 import Login from "../components/Login/Login";
 import {ArrowLeftIcon} from "@heroicons/react/solid";
-import Comment from "../components/Comment";
+import Comment from "../components/Feed/Comment";
 import Widgets from "../components/Widgets/Widgets";
 
 function PostPage({providers}) {
