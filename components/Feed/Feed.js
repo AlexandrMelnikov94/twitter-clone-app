@@ -1,10 +1,9 @@
 import {SparklesIcon} from "@heroicons/react/outline";
 import Input from "./Input";
 import {useEffect, useState} from "react";
-import { onSnapshot, collection, query, orderBy } from "@firebase/firestore";
-import { db } from "../firebase";
+import {onSnapshot, collection, query, orderBy} from "@firebase/firestore";
+import {db} from "../../firebase";
 import Post from "./Post";
-import { useSession } from "next-auth/react";
 
 function Feed() {
   const [posts, setPosts] = useState([]);
@@ -19,7 +18,6 @@ function Feed() {
       ),
     [db]
   );
-
 
   return (
     <div className="flex-grow border-l border-r border-gray-200 max-w-2xl sm:ml-[73px]
@@ -36,7 +34,9 @@ function Feed() {
       <Input/>
       <div className="pb-72">
         {posts.map(post => (
-          <Post key={post.id} id={post.id} post={post.data()}/>
+          <Post key={post.id}
+                id={post.id}
+                post={post.data()}/>
         ))}
       </div>
     </div>

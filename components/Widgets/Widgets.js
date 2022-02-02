@@ -1,6 +1,4 @@
 import {SearchIcon} from "@heroicons/react/outline";
-import { Timeline, Follow } from 'react-twitter-widgets';
-
 
 function Widgets() {
   return (
@@ -19,9 +17,7 @@ function Widgets() {
           />
         </div>
       </div>
-
       <div className="space-y-3 pt-2 bg-gray-100 rounded-xl w-11/12 xl:w9/12">
-
       </div>
     </div>
   )

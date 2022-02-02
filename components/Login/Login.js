@@ -28,5 +28,4 @@ function Login({providers}) {
   )
 }
 
-
 export default Login;

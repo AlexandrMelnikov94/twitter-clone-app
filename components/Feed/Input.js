@@ -3,14 +3,8 @@ import {EmojiHappyIcon, XIcon} from "@heroicons/react/outline";
 import {PhotographIcon} from "@heroicons/react/outline";
 import 'emoji-mart/css/emoji-mart.css';
 import {Picker} from 'emoji-mart';
-import {db, storage} from "../firebase";
-import {
-  addDoc,
-  collection,
-  doc,
-  serverTimestamp,
-  updateDoc,
-} from "@firebase/firestore";
+import {db, storage} from "../../firebase";
+import {addDoc, collection, doc, serverTimestamp, updateDoc} from "@firebase/firestore";
 import {getDownloadURL, ref, uploadString} from "@firebase/storage";
 import {useSession} from "next-auth/react";
 
@@ -72,7 +66,6 @@ function Input() {
     setInput(input + emoji);
   };
 
-
   return (
     <div className={`border-b border-grey-100 p-3 flex space-x-3 overflow-y-scroll 
     truncate ${loading && "opacity-60"}`}>
@@ -88,7 +81,6 @@ function Input() {
             rows="2"
             className="bg-transparent outline-none text-lg tracking-wide w-full
             min-h-[50px] truncate resize-none"/>
-
           {selectedFile && (
             <div className="relative">
               <div className="absolute w-5 h-5 bg-[#15191c] hover:bg-[#272c26]
@@ -115,12 +107,10 @@ function Input() {
                   onChange={addImageToPost}
                   ref={filePickerRef}/>
               </div>
-
               <div className="icon"
                    onClick={() => setShowEmojis(!showEmojis)}>
                 <EmojiHappyIcon className="text-[#1d9bf0] h-[22px]"/>
               </div>
-
               {showEmojis && (
                 <Picker
                   onSelect={addEmoji}
@@ -143,10 +133,8 @@ function Input() {
             </button>
           </div>
         )}
-
       </div>
     </div>
-
   )
 }
 

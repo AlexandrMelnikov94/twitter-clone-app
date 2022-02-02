@@ -4,15 +4,15 @@ import {useRouter} from "next/router";
 import {useEffect, useState} from "react";
 import {useRecoilState} from "recoil";
 import {modalState} from "../atoms/modalAtom";
-import Modal from "../components/Modal";
-import Sidebar from "../components/Sidebar";
-import Post from "../components/Post";
+import Modal from "../components/Feed/Modal";
+import Sidebar from "../components/Sidebar/Sidebar";
+import Post from "../components/Feed/Post";
 import {db} from "../firebase";
 import Head from "next/head";
-import Login from "../components/Login";
+import Login from "../components/Login/Login";
 import {ArrowLeftIcon} from "@heroicons/react/solid";
 import Comment from "../components/Comment";
-import Widgets from "../components/Widgets";
+import Widgets from "../components/Widgets/Widgets";
 
 function PostPage({providers}) {
   const {data: session} = useSession();
@@ -53,7 +53,6 @@ function PostPage({providers}) {
         <link rel="icon"
               href="/favicon.ico"/>
       </Head>
-
       <main className="bg-white min-h-screen flex max-w-[1500px] mx-auto">
         <Sidebar/>
         <div className="flex-grow border-l border-r
@@ -72,8 +71,10 @@ function PostPage({providers}) {
                 postPage/>
           {comments.length > 0 && (
             <div className="pb-72">
-              {comments.map(comment =>(
-                <Comment key={comment.id} id={comment.id} comment={comment.data()}/>
+              {comments.map(comment => (
+                <Comment key={comment.id}
+                         id={comment.id}
+                         comment={comment.data()}/>
               ))}
             </div>
           )}

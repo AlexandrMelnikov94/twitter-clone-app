@@ -1,12 +1,4 @@
-import {
-  collection,
-  deleteDoc,
-  doc,
-  onSnapshot,
-  orderBy,
-  query,
-  setDoc,
-} from "@firebase/firestore";
+import {collection, deleteDoc, doc, onSnapshot, orderBy, query, setDoc} from "@firebase/firestore";
 import {
   ChartBarIcon,
   ChatIcon,
@@ -14,19 +6,16 @@ import {
   HeartIcon,
   ShareIcon,
   SwitchHorizontalIcon,
-  TrashIcon,
+  TrashIcon
 } from "@heroicons/react/outline";
-import {
-  HeartIcon as HeartIconFilled,
-  ChatIcon as ChatIconFilled,
-} from "@heroicons/react/solid";
+import {HeartIcon as HeartIconFilled} from "@heroicons/react/solid";
 import {useSession} from "next-auth/react";
 import {useRouter} from "next/router";
 import {useEffect, useState} from "react";
 import Moment from "react-moment";
 import {useRecoilState} from "recoil";
-import {modalState, postIdState} from "../atoms/modalAtom";
-import {db} from "../firebase";
+import {modalState, postIdState} from "../../atoms/modalAtom";
+import {db} from "../../firebase";
 
 function Post({id, post, postPage}) {
   const {data: session} = useSession();
@@ -72,7 +61,6 @@ function Post({id, post, postPage}) {
     [db, id]
   );
 
-
   const likePost = async () => {
     if (liked) {
       await deleteDoc(doc(db, "posts", id, "likes", session.user.uid))
@@ -99,7 +87,7 @@ function Post({id, post, postPage}) {
                  alt=""
                  className="h-11 w-11 rounded-full mr-4"/>
           )}
-          <div >
+          <div>
             <div className="inline-block group">
               <h4 className={`font-medium text-[15px] 
               sm:text-base group-hover:underline
@@ -128,7 +116,6 @@ function Post({id, post, postPage}) {
         />
         <div className={`flex justify-between w-10/12
          ${postPage && "mx-auto"}`}>
-          {/*-----COMMENTS-------*/}
           <div
             className="flex items-center space-x-1 group"
             onClick={(e) => {
@@ -146,7 +133,6 @@ function Post({id, post, postPage}) {
               </span>
             )}
           </div>
-          {/*-----DELETE-------*/}
           {session.user.uid === post?.id ? (
             <div
               className="flex items-center space-x-1 group"
@@ -161,14 +147,12 @@ function Post({id, post, postPage}) {
               </div>
             </div>
           ) : (
-            // -----REPOST-------
             <div className="flex items-center space-x-1 group">
               <div className="icon group-hover:bg-green-500/10">
                 <SwitchHorizontalIcon className="h-5 group-hover:text-green-500"/>
               </div>
             </div>
           )}
-          {/*-----LIKES-------*/}
           <div
             className="flex items-center space-x-1 group"
             onClick={(e) => {

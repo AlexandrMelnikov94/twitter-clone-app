@@ -46,7 +46,8 @@ function Sidebar() {
        hover:bg-[#1a8cd8]">Tweet
       </button>
       <div className="flex items-center justify-center mt-auto hoverAnimation
-       xl:ml-auto xl:-mr-5" onClick={signOut}>
+       xl:ml-auto xl:-mr-5"
+           onClick={signOut}>
         <img src={session.user.image}
              alt=""
              className="h-10 w-10 rounded-full xl:mr-2.5"

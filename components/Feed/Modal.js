@@ -1,21 +1,11 @@
 import {useRecoilState} from "recoil";
-import {modalState, postIdState} from "../atoms/modalAtom";
+import {modalState, postIdState} from "../../atoms/modalAtom";
 import {Dialog, Transition} from "@headlessui/react";
 import {Fragment, useEffect, useState} from "react";
-import {
-  onSnapshot,
-  doc,
-  addDoc,
-  collection,
-  serverTimestamp,
-} from "@firebase/firestore";
-import {db} from "../firebase";
+import {onSnapshot, doc, addDoc, collection, serverTimestamp} from "@firebase/firestore";
+import {db} from "../../firebase";
 import {useSession} from "next-auth/react";
-import {
-  EmojiHappyIcon,
-  PhotographIcon,
-  XIcon,
-} from "@heroicons/react/outline";
+import {EmojiHappyIcon, PhotographIcon, XIcon} from "@heroicons/react/outline";
 import {useRouter} from "next/router";
 import Moment from "react-moment";
 
@@ -39,7 +29,7 @@ function Modal() {
   const sendComment = async (e) => {
     e.preventDefault();
 
-    await addDoc(collection(db,'posts',postId,"comments"),{
+    await addDoc(collection(db, 'posts', postId, "comments"), {
       comment: comment,
       username: session.user.name,
       tag: session.user.tag,
@@ -108,11 +98,11 @@ function Modal() {
                         <span className="text-[#6e767d] ml-1.5 text-sm sm:text-[15px]">
                           @{post?.tag}</span>
                       </div>
-                        <span className="text-[#6e767d]">{" "}·{" "}</span>
-                        <span className="text-[#6e767d] hover:underline text-sm sm:text-[15px] ">
+                      <span className="text-[#6e767d]">{" "}·{" "}</span>
+                      <span className="text-[#6e767d] hover:underline text-sm sm:text-[15px] ">
                           <Moment fromNow>{post?.timestamp?.toDate()}</Moment>
                         </span>
-                        <p className="text-[15px] sm:text-base">{post?.text}</p>
+                      <p className="text-[15px] sm:text-base">{post?.text}</p>
                     </div>
                   </div>
                   <div className="mt-7 flex space-x-3 w-full">
@@ -132,10 +122,10 @@ function Modal() {
                       <div className="flex items-center justify-between pt-2.5">
                         <div className="flex items-center">
                           <div className="icon">
-                            <PhotographIcon className="text-[#1d9bf0] h-[22px]" />
+                            <PhotographIcon className="text-[#1d9bf0] h-[22px]"/>
                           </div>
                           <div className="icon">
-                            <EmojiHappyIcon className="text-[#1d9bf0] h-[22px]" />
+                            <EmojiHappyIcon className="text-[#1d9bf0] h-[22px]"/>
                           </div>
                         </div>
                         <button

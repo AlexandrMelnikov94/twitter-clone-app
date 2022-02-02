@@ -1,12 +1,12 @@
 import Head from 'next/head'
-import Sidebar from "../components/Sidebar";
-import Feed from "../components/Feed";
+import Sidebar from "../components/Sidebar/Sidebar";
+import Feed from "../components/Feed/Feed";
 import { getProviders, getSession, useSession } from "next-auth/react";
-import Login from "../components/Login";
-import Modal from "../components/Modal";
+import Login from "../components/Login/Login";
+import Modal from "../components/Feed/Modal";
 import {useRecoilState} from "recoil";
 import {modalState} from "../atoms/modalAtom";
-import Widgets from "../components/Widgets";
+import Widgets from "../components/Widgets/Widgets";
 
 export default function Home({providers}) {
   const { data: session } = useSession();
@@ -28,8 +28,6 @@ export default function Home({providers}) {
         <Sidebar/>
         <Feed/>
         <Widgets/>
-
-
         {isOpen && <Modal/>}
       </main>
     </div>
